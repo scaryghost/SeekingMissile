@@ -1,0 +1,3 @@
+[submodule "Cpp2DGameEngine"]
+	path = Cpp2DGameEngine
+	url = https://github.com/scaryghost/Cpp2DGameEngine.git
