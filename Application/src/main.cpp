@@ -7,6 +7,7 @@
 
 const double refreshHz= 1.0/30.0;
 
+using etsai::cpp2dgameengine::core::Object;
 using std::cerr;
 using std::endl;
 
@@ -45,6 +46,7 @@ int main(int argc, char **argv) {
 
         switch(ev.type) {
             case ALLEGRO_EVENT_TIMER:
+                Object::tickObjects(refreshHz);
                 break;
             case ALLEGRO_EVENT_KEY_DOWN:
                 if (ev.keyboard.keycode == ALLEGRO_KEY_W) {
@@ -66,6 +68,7 @@ int main(int argc, char **argv) {
                 break;
         }
         al_clear_to_color(al_map_rgb(0,0,0));
+        Object::drawObjects();
         al_flip_display();
     } while(ev.type != ALLEGRO_EVENT_DISPLAY_CLOSE);
 

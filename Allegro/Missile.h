@@ -16,6 +16,7 @@ public:
 
     void setAcceleration(float xComp, float yComp);    
 protected:
+    int halfW, halfH;
     core::Vector2D acceleration;
 
     virtual bool tick(float delta);

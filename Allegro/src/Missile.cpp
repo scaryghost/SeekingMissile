@@ -1,3 +1,4 @@
+#include "Allegro/A5HitBox.h"
 #include "Allegro/Missile.h"
 
 #include "allegro5/allegro.h"
@@ -7,10 +8,17 @@ namespace etsai {
 namespace seekingmissile {
 namespace allegro {
 
-Missile::Missile(float xPos, float yPos) : Actor(xPos, yPos) {
+Missile::Missile(float xPos, float yPos) : Actor(xPos, yPos), halfW(10), halfH(10) {
+    hitbox= new A5HitBox(xPos, yPos);
+    hitbox->addBoundaryPoint(-halfW, -halfH);
+    hitbox->addBoundaryPoint(-halfW, halfH);
+    hitbox->addBoundaryPoint(halfW, halfH);
+    hitbox->addBoundaryPoint(halfW, -halfH);
+
 }
 
 Missile::~Missile() {
+    delete hitbox;
 }
 
 void Missile::setAcceleration(float xComp, float yComp) {
@@ -27,7 +35,7 @@ bool Missile::tick(float delta) {
 }
 
 void Missile::draw() {
-    al_draw_filled_rectangle(objPos.vx - 10, objPos.vy - 10, objPos.vx + 10, objPos.vy + 10, al_map_rgb(255, 0, 0));
+    al_draw_filled_rectangle(objPos.vx - halfW, objPos.vy - halfH, objPos.vx + halfW, objPos.vy + halfH, al_map_rgb(255, 0, 0));
 }
 
 void Missile::touch(Actor* actor) {
