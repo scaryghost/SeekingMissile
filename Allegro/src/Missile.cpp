@@ -30,7 +30,7 @@ bool Missile::tick(float delta) {
 
     al_get_mouse_state(&state);
     core::Vector2D direction= (core::Vector2D(state.x, state.y) - objPos).normalize();
-    acceleration= direction * 100;
+    velocity= direction * 100;
     return Actor::tick(delta);
 }
 
