@@ -22,4 +22,4 @@ LIB_NAMES:=$(CPP2DGAMEENGINE_LIBNAME)
 MAIN=Application/src/main.cpp
 SRCS:=$(MAIN)
 BIN=seekingmissile
-MODULES=
+MODULES=Allegro

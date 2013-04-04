@@ -1,6 +1,8 @@
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_primitives.h"
 
+#include "Allegro/Missile.h"
+
 #include <iostream>
 
 const double refreshHz= 1.0/30.0;
@@ -37,6 +39,7 @@ int main(int argc, char **argv) {
     al_register_event_source(event_queue, al_get_mouse_event_source());
     al_start_timer(timer);
 
+    new etsai::seekingmissile::allegro::Missile(840, 525);
     do {
         al_wait_for_event(event_queue, &ev);
 
